@@ -1,8 +1,8 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import SplitText from "@/components/split-text";
 import Autoscroll from "embla-carousel-auto-scroll";
+import { SplitText } from "./split-text";
 import GrainientBackground from "./grainient-background";
 import { cn } from "@/lib/utils";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
