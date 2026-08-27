@@ -7,13 +7,13 @@ import ProblemSection from "@/components/problem-section";
 import Testimonials from "@/components/testimonials";
 
 export default function Home() {
-  return (
-    <div className="z-10 relative h-full items-center space-y-36">
-      <NavBar />
-      <HeroSection />
-      {/* <InformationSection /> */}
-      <ProblemSection />
-      <Testimonials />
-    </div>
-  );
+    return (
+        <div className="z-10 relative h-full items-center space-y-18 xl:space-y-36">
+            <NavBar />
+            <HeroSection />
+            {/* <InformationSection /> */}
+            <ProblemSection />
+            <Testimonials />
+        </div>
+    );
 }
