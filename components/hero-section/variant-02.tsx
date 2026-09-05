@@ -109,11 +109,36 @@ export default function HeroSectionVariant02() {
       window.addEventListener("resize", setup)
 
       const totalAngle = (cards.length - 1) * angleStepDeg
-      const snapPoints = cards.map(
-        (_, idx) => (idx * angleStepDeg) / totalAngle,
-      )
+      // const snapPoints = cards.map(
+      //   (_, idx) => (idx * angleStepDeg) / totalAngle,
+      // )
 
       const scrollDistance = cards.length * SCROLL_DISTANCE + 300
+
+      // track last set index to avoid redundant state updates
+      let lastIndex = -1
+
+      function updateActiveByProximity(progress: number) {
+        const currentAngle = progress * totalAngle // how far the wheel has rotated so far
+
+        let closestIdx = 0
+        let closestDist = Infinity
+
+        cards.forEach((_, idx) => {
+          const cardAngle = idx * angleStepDeg
+          const dist = Math.abs(cardAngle - currentAngle) // how far this card is from "front"
+
+          if (dist < closestDist) {
+            closestDist = dist
+            closestIdx = idx
+          }
+        })
+
+        if (closestIdx !== lastIndex) {
+          lastIndex = closestIdx
+          setActiveIndex(closestIdx)
+        }
+      }
 
       gsap.to("#wheel", {
         rotate: () => -totalAngle,
@@ -125,19 +150,34 @@ export default function HeroSectionVariant02() {
           end: `+=${scrollDistance}`,
           scrub: 1,
           invalidateOnRefresh: true,
-          snap: {
-            snapTo: (value) => {
-              const snapped = gsap.utils.snap(snapPoints, value)
-              const index = snapPoints.indexOf(snapped)
-
-              setActiveIndex(index)
-
-              return snapped
-            },
-            duration: 0.12,
-            delay: 0.12,
-            ease: "power2.out",
-          },
+          onUpdate: (self) => updateActiveByProximity(self.progress),
+          onLeave: () => updateActiveByProximity(1),
+          onEnterBack: () => updateActiveByProximity(1),
+          /// -------------
+          /// SNAP METHOD (Too much hack required)
+          // --------------
+          // onUpdate: (self) => {
+          //   if (self.progress >= 0.999) {
+          //     setActiveIndex(cards.length - 1)
+          //   } else if (self.progress <= 0.001) {
+          //     setActiveIndex(0)
+          //   }
+          // },
+          // onLeave: () => setActiveIndex(cards.length - 1),
+          // onEnterBack: () => setActiveIndex(cards.length - 1),
+          // snap: {
+          //   snapTo: (value) => {
+          //     const snapped = gsap.utils.snap(snapPoints, value)
+          //     const index = snapPoints.indexOf(snapped)
+          //
+          //     setActiveIndex(index)
+          //
+          //     return snapped
+          //   },
+          //   duration: 0.12,
+          //   delay: 0.12,
+          //   ease: "power2.out",
+          // },
         },
       })
     },
@@ -186,7 +226,7 @@ export default function HeroSectionVariant02() {
                       transition={{ duration: 0.4, ease: "easeInOut" }}
                       width={1920}
                       height={1080}
-                      className="absolute inset-0 size-full object-cover"
+                      className="absolute inset-0 size-full object-cover rounded-2xl"
                     />
                   ),
               )}
