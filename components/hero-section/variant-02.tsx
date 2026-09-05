@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-/** biome-ignore-all lint/performance/noImgElement: false */
 "use client"
 
 import { useGSAP } from "@gsap/react"
@@ -9,6 +7,7 @@ import { Flip } from "gsap/Flip"
 import { MotionPathPlugin } from "gsap/MotionPathPlugin"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { AnimatePresence, motion } from "motion/react"
+import Image from "next/image"
 import { useRef, useState } from "react"
 import DarkVeil from "@/components/dark-vail"
 
@@ -26,32 +25,32 @@ const cards: Card[] = [
   {
     number: "01",
     title: "Dragon",
-    icon: "hero/dragon-icon.webp",
-    image: "hero/dragon.webp",
+    icon: "/hero/dragon-icon.webp",
+    image: "/hero/dragon.webp",
   },
   {
     number: "02",
     title: "Tux",
-    icon: "hero/tux-icon.webp",
-    image: "hero/tux.webp",
+    icon: "/hero/tux-icon.webp",
+    image: "/hero/tux.webp",
   },
   {
     number: "03",
     title: "Fox",
-    icon: "hero/fox-icon.webp",
-    image: "hero/fox.webp",
+    icon: "/hero/fox-icon.webp",
+    image: "/hero/fox.webp",
   },
   {
     number: "04",
     title: "Cat",
-    icon: "hero/cat-icon.webp",
-    image: "hero/cat.webp",
+    icon: "/hero/cat-icon.webp",
+    image: "/hero/cat.webp",
   },
   {
     number: "05",
     title: "Lion",
-    icon: "hero/lion-icon.webp",
-    image: "hero/lion.webp",
+    icon: "/hero/lion-icon.webp",
+    image: "/hero/lion.webp",
   },
 ]
 
@@ -145,6 +144,8 @@ export default function HeroSectionVariant02() {
     { scope: sectionRef },
   )
 
+  const MotionImage = motion.create(Image)
+
   return (
     <section
       ref={sectionRef}
@@ -175,7 +176,7 @@ export default function HeroSectionVariant02() {
                 (s, idx) =>
                   !s.hidden &&
                   activeIndex === idx && (
-                    <motion.img
+                    <MotionImage
                       key={s.title}
                       src={s.image}
                       alt={s.title}
@@ -183,6 +184,8 @@ export default function HeroSectionVariant02() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.4, ease: "easeInOut" }}
+                      width={1920}
+                      height={1080}
                       className="absolute inset-0 size-full object-cover"
                     />
                   ),
@@ -205,9 +208,11 @@ export default function HeroSectionVariant02() {
                   }}
                 >
                   <div className="size-full flex backdrop-blur-xl bg-black/40 items-center justify-center">
-                    <img
+                    <Image
                       src={s.icon}
                       alt=""
+                      width={512}
+                      height={512}
                       className="w-20 object-cover pointer-none  cursor-pointer"
                     />
                   </div>
@@ -215,7 +220,7 @@ export default function HeroSectionVariant02() {
               ))}
             </div>
           </div>
-          <div className="absolute bottom-10 flex flex-col text-center items-center gap-2 bottom-5 left-[50%] -translate-x-1/2 text-sm">
+          <div className="absolute bottom-10 flex flex-col text-center items-center gap-2 left-[50%] -translate-x-1/2 text-sm">
             <h1 className="text-5xl font-bold max-w-2xl">
               From Science Fiction to Reality
             </h1>
