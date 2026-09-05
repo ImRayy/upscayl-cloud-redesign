@@ -1,12 +1,13 @@
-"use client";
+/** biome-ignore-all lint/performance/noImgElement: false */
+"use client"
 
 /* eslint-disable @next/next/no-img-element */
-import Autoscroll from "embla-carousel-auto-scroll";
-import { SplitText } from "./split-text";
-import GrainientBackground from "./grainient-background";
-import { cn } from "@/lib/utils";
-import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
-import { useRef } from "react";
+import Autoscroll from "embla-carousel-auto-scroll"
+import { useRef } from "react"
+import { SplitText } from "@/components/split-text"
+import { cn } from "@/lib/utils"
+import GrainientBackground from "../grainient-background"
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel"
 
 const logos = [
   {
@@ -69,10 +70,10 @@ const logos = [
     alt: "Linux Uprising",
     className: "invert",
   },
-];
+]
 
-export default function HeroSection() {
-  const carouselRef = useRef(null);
+export default function HeroSectionVariant01() {
+  const carouselRef = useRef(null)
 
   return (
     <section className="items-center relative flex flex-col justify-center h-full min-h-screen">
@@ -169,5 +170,5 @@ export default function HeroSection() {
         </Carousel>
       </div>
     </section>
-  );
+  )
 }
