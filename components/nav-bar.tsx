@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
+"use client"
 
-import { Button } from "./ui/button";
+import { Button } from "./ui/button"
 
 const links = [
   { key: "home", label: "Home" },
@@ -9,26 +9,37 @@ const links = [
   { key: "cloud", label: "Cloud" },
   { key: "desktop", label: "Desktop" },
   { key: "docs", label: "Docs" },
-];
+]
 
 export default function NavBar() {
   return (
-    <nav className="fixed pt-4 w-full  z-10 flex items-center justify-center">
-      <div className="max-w-2xl bg-black/40 border-white/20 border backdrop-blur-sm w-full rounded-xl inline-flex justify-between p-2">
-        <div>
-          <img src="logo/64x64.png" alt="" className="w-7" />
-        </div>
-        <div className="space-x-3">
-          {links.map((link) => (
-            <a key={link.key} href={link.key} className="text-sm">
-              {link.label}
-            </a>
-          ))}
-        </div>
-        <div>
-          <Button size="sm">Dashboard</Button>
-        </div>
+    <nav className="fixed left-4 right-4 top-4 z-10 flex items-center justify-between bg-black p-2">
+      <div>
+        <img src="logo/64x64.png" alt="" className="w-7" />
+      </div>
+
+      <div className="absolute left-1/2 -translate-x-1/2 inline-flex items-center gap-1 border rounded-full p-0.5 [&>button]:rounded-full">
+        <Button size="lg" variant="secondary">
+          Home
+        </Button>
+        <Button size="lg" variant="ghost">
+          Cloud
+        </Button>
+        <Button size="lg" variant="ghost">
+          Desktop
+        </Button>
+        <Button size="lg" variant="ghost">
+          Pricing
+        </Button>
+        <Button size="lg" variant="ghost">
+          Docs
+        </Button>
+      </div>
+
+      <div className="space-x-2">
+        <Button variant="ghost">Download</Button>
+        <Button>Dashboard</Button>
       </div>
     </nav>
-  );
+  )
 }
