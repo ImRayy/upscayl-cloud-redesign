@@ -1,4 +1,5 @@
-import { QuoteIcon, SparklesIcon } from "lucide-react"
+import { QuoteIcon } from "lucide-react"
+import HeaderText from "./header-text"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import { Button } from "./ui/button"
 import Marquee from "./ui/marquee"
@@ -96,17 +97,18 @@ const secondRow = reviews.slice(reviews.length / 2)
 export default function Testimonials() {
   return (
     <section className="relative max-w-5xl mx-auto p-4 space-y-8">
-      <div className="gap-2 flex-col flex items-center text-center">
+      <HeaderText
+        title="Hey, people seem to love us too!"
+        description={""}
+        className="gap-2 flex-col flex items-center text-center sm:max-w-full"
+      >
         <Button variant="outline" size="sm" className="rounded-full" asChild>
           <div>
             <QuoteIcon />
             Testimonials
           </div>
         </Button>
-        <h2 className="text-4xl font-semibold">
-          Hey, people seem to love us too!
-        </h2>
-      </div>
+      </HeaderText>
       <div className="relative">
         <Marquee pauseOnHover className="[--duration:20s]">
           {firstRow.map((review) => (

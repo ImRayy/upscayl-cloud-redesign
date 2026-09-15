@@ -5,6 +5,7 @@ import {
   WandSparklesIcon,
 } from "lucide-react"
 import { useId } from "react"
+import HeaderText from "../header-text"
 import { Button } from "../ui/button"
 
 const features = [
@@ -32,17 +33,16 @@ export default function BenifitsSection() {
   const componentId = useId()
   return (
     <section className="max-w-5xl mx-auto p-4 space-y-8">
-      <div className="sm:max-w-2/3 space-y-2">
+      <HeaderText
+        title="Upscayl Cloud"
+        description="Now do more than just upscaling. Generate images and edit images with
+          the power of AI."
+      >
         <Button variant="outline" size="sm" className="rounded-full">
           <SparklesIcon />
-          Upscayl Cloud
+          Features
         </Button>
-        <h2 className="text-4xl font-semibold">The AI Image Revolution</h2>
-        <p className="text-muted-foreground">
-          Now do more than just upscaling. Generate images and edit images with
-          the power of AI.
-        </p>
-      </div>
+      </HeaderText>
       <div className="flex flex-col md:flex-row gap-8">
         <div className="rounded-3xl p-2 bg-card md:max-w-sm">
           <div className="aspect-video overflow-hidden rounded-2xl md:aspect-square shrink-0">
