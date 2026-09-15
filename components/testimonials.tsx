@@ -70,10 +70,12 @@ const reviews: Review[] = [
 
 const ReviewCard = (review: Review) => {
   return (
-    <div className="border rounded-2xl p-4 bg-card shrink-0 max-w-md flex flex-col justify-between cursor-pointer">
+    <div className="border rounded-2xl p-4 bg-card shrink-0 sm:max-w-md flex flex-col justify-between cursor-pointer max-w-56">
       <div>
-        <QuoteIcon className="text-red-400 mb-5" />
-        <h3 className="text-lg font-bold mb-1">{review.name}</h3>
+        <QuoteIcon className="text-red-400 mb-5 hidden sm:block" />
+        <h3 className="text-lg font-bold mb-1 hidden sm:block">
+          {review.name}
+        </h3>
         <p className="text-sm">{review.body}</p>
       </div>
       <div className="inline-flex gap-3 items-center pt-6">
@@ -121,8 +123,8 @@ export default function Testimonials() {
           ))}
         </Marquee>
 
-        <div className="pointer-events-none absolute inset-y-0 left-0 sm:w-2/5 w-1/5 bg-linear-to-r from-background via-background/70 to-transparent"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 sm:w-2/5 w-1/5 bg-linear-to-l from-background via-background/70 to-transparent"></div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 sm:w-2/5 w-1/12 bg-linear-to-r from-background via-background/70 to-transparent"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 sm:w-2/5 w-1/12 bg-linear-to-l from-background via-background/70 to-transparent"></div>
       </div>
     </section>
   )
