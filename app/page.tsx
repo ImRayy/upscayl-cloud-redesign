@@ -1,5 +1,6 @@
 "use client"
 
+import BenifitsSection from "@/components/benifits-section"
 import Footer from "@/components/footer"
 import HeroSection from "@/components/hero-section"
 import InformationSection from "@/components/information-section"
@@ -10,12 +11,13 @@ import UpscaylDesktopSection from "@/components/upscayl-desktop-section"
 
 export default function Home() {
   return (
-    <div className="z-10  items-center space-y-18 xl:space-y-36 bg-background">
+    <div className="z-10  items-center space-y-28 xl:space-y-48 bg-background">
       <NavBar />
       <HeroSection variant="variant-2" />
       {/* <InformationSection /> */}
       {/* <ProblemSection /> */}
       {/* <Testimonials /> */}
+      <BenifitsSection />
       <UpscaylDesktopSection />
       <Footer />
     </div>
