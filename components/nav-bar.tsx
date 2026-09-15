@@ -13,7 +13,7 @@ const links = [
 
 export default function NavBar() {
   return (
-    <nav className="fixed left-4 right-4 top-4 z-10 flex items-center justify-between bg-black p-2">
+    <nav className="fixed left-0 right-0 top-0 z-10 flex items-center justify-between bg-background p-4">
       <div>
         <img src="logo/64x64.png" alt="" className="w-7" />
       </div>

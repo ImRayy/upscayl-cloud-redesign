@@ -6,15 +6,17 @@ import InformationSection from "@/components/information-section"
 import NavBar from "@/components/nav-bar"
 import ProblemSection from "@/components/problem-section"
 import Testimonials from "@/components/testimonials"
+import UpscaylDesktopSection from "@/components/upscayl-desktop-section"
 
 export default function Home() {
   return (
-    <div className="z-10  items-center space-y-18 xl:space-y-36">
+    <div className="z-10  items-center space-y-18 xl:space-y-36 bg-background">
       <NavBar />
       <HeroSection variant="variant-2" />
       {/* <InformationSection /> */}
-      <ProblemSection />
-      <Testimonials />
+      {/* <ProblemSection /> */}
+      {/* <Testimonials /> */}
+      <UpscaylDesktopSection />
       <Footer />
     </div>
   )
