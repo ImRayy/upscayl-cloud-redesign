@@ -43,9 +43,9 @@ export default function BenifitsSection() {
           the power of AI.
         </p>
       </div>
-      <div className="flex gap-8">
-        <div className="rounded-3xl p-2 bg-card">
-          <div className="aspect-square overflow-hidden rounded-2xl max-w-sm shrink-0">
+      <div className="flex flex-col md:flex-row gap-8">
+        <div className="rounded-3xl p-2 bg-card md:max-w-sm">
+          <div className="aspect-video overflow-hidden rounded-2xl md:aspect-square shrink-0">
             <img
               src="https://cdn.cosmos.so/028f71b1-ec07-4e44-bd0d-579561497b06?format=webp"
               alt=""
