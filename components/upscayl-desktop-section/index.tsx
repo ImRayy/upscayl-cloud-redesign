@@ -55,7 +55,7 @@ export default function UpscaylDesktopSection() {
   const componentId = useId()
   return (
     <section className="max-w-5xl flex mx-auto items-start justify-center p-4 flex-col gap-8">
-      <div className="max-w-2/3 space-y-2">
+      <div className="sm:max-w-2/3 space-y-2">
         <h2 className="text-4xl font-semibold">The app you know and love</h2>
         <p className="text-muted-foreground">
           Upscayl Desktop continues to be the best image upscaler for Linux,
@@ -76,7 +76,7 @@ export default function UpscaylDesktopSection() {
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-4">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 w-full gap-4">
         {features.map((feature, idx) => (
           <div
             key={`${componentId}-${idx}`}

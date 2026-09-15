@@ -32,7 +32,7 @@ export default function BenifitsSection() {
   const componentId = useId()
   return (
     <section className="max-w-5xl mx-auto p-4 space-y-8">
-      <div className="max-w-2/3 space-y-2">
+      <div className="sm:max-w-2/3 space-y-2">
         <Button variant="outline" size="sm" className="rounded-full">
           <SparklesIcon />
           Upscayl Cloud

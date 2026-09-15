@@ -16,9 +16,9 @@ export default function Home() {
       <HeroSection variant="variant-2" />
       {/* <InformationSection /> */}
       {/* <ProblemSection /> */}
-      {/* <Testimonials /> */}
       <BenifitsSection />
       <UpscaylDesktopSection />
+      <Testimonials />
       <Footer />
     </div>
   )

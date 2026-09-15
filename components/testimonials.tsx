@@ -1,40 +1,20 @@
-/* eslint-disable @next/next/no-img-element */
-"use client";
+import { QuoteIcon, SparklesIcon } from "lucide-react"
+import { Avatar, AvatarImage } from "./ui/avatar"
+import { Button } from "./ui/button"
+import Marquee from "./ui/marquee"
 
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+type Review = {
+  name: string
+  username: string
+  body: string
+  img: string
+}
 
-const animations = {
-  featured: {
-    initial: { opacity: 0, scale: 0.98 },
-    animate: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 1.02 },
-  },
-
-  wide: {
-    initial: { opacity: 0, y: -80 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 80 },
-  },
-
-  left: {
-    initial: { opacity: 0, x: 80 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: -80 },
-  },
-
-  right: {
-    initial: { opacity: 0, y: 80 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -80 },
-  },
-};
-
-const reviews = [
+const reviews: Review[] = [
   {
     name: "isobelh.art",
     username: "@isobelh_art",
-    body: "I've been looking everywhere and have settled on Upscayl. It's free, which is a definite bonus, but it also seems better than all the paid ones I tried the trial of!",
+    body: " I've been looking everywhere and have settled on Upscayl. It's free, which is a definite bonus, but it also seems better than all the paid ones I tried the trial of!",
     img: "https://unavatar.io/twitter/isobelh_art",
   },
   {
@@ -46,7 +26,7 @@ const reviews = [
   {
     name: "José Julio Cuairán",
     username: "@ai_artinfocus",
-    body: "I tell you one that you have not mentioned and it is excellent. Besides, it can be run locally, which is good for your security and privacy.",
+    body: "I tell you one that you have not mentioned and it is excellent. Besides, it can be run locally, which is good for your security and privacy. Do you want to know its name? Upscayl at https://upscayl.org Discover its potential now.",
     img: "https://unavatar.io/twitter/ai_artinfocus",
   },
   {
@@ -58,166 +38,90 @@ const reviews = [
   {
     name: "nolimitlearn",
     username: "@nolimitlearn",
-    body: "Don't want to pay $40/month for Magnific? I will use Upscayl for free.",
+    body: "Don't want to pay $40/month for Magnific? I have tried my best to give Javi some good advice to offer a $100/yr. 40 gens/mo. basic plan but seems to have fallen on deaf ears. This is fine, people can do what they want, so I will use Upscayl for free.",
     img: "https://unavatar.io/twitter/nolimitlearn",
   },
   {
     name: "_fw",
     username: "@_fw",
-    body: "I use UpScayl pretty much every day and doing so feels like magic every time.",
+    body: "I use UpScayl pretty much every day and doing so feels like magic every time. Your user interface tweaks here and there are always appreciated and UpScayl is a joy to use. Feel proud, Upscayl is witchcraft and I love it",
     img: "https://unavatar.io/twitter/_fw",
   },
   {
     name: "Anirudh Thakur",
     username: "@Itsyopahadiboy",
-    body: "There is a great Upscaler that is Open Source and Entirely free. It is called Upscayl.",
+    body: "There is a great Upscaler that is Open Source and Entirely free. It is called, 'Upscayl' and you can run it locally and now on the cloud too!",
     img: "https://unavatar.io/twitter/Itsyopahadiboy",
   },
   {
     name: "Einar Petersen",
     username: "@TheEinarkist",
-    body: "A super nice tool for up-scaling I've used to save some old images.",
+    body: "A super nice tool for up-scaling I've used to 'save' some images down scaled in the early 00's for a website, where the original photos and paintings had burned in a fire and the only thing remaining were the digitally compressed images, is Upscayl.",
     img: "https://unavatar.io/twitter/TheEinarkist",
   },
   {
     name: "hard-coded.xyz",
     username: "@hard_coded_xyz",
-    body: "Upscayl are proper disruptors. While some people charge monthly, these guys offer it for free.",
+    body: "upscayl are proper distruptors, while some people charge 29usd/month for the same thing those guys offer the same for free, as it should be as most of this tech is free, just because somebody does not know how to code they should not be punished",
     img: "https://unavatar.io/twitter/hard_coded_xyz",
   },
-];
+]
 
-type Review = (typeof reviews)[number];
-
-function ReviewCard({ review }: { review: Review }) {
+const ReviewCard = (review: Review) => {
   return (
-    <div className="flex size-full flex-col justify-between p-6">
-      <p id="review-body" className="text-sm">
-        “{review.body}”
-      </p>
-
-      <div className="flex items-center gap-3">
-        <img
-          src={review.img}
-          alt={review.name}
-          className="size-10 rounded-full"
-        />
-
-        <div>
-          <p className="font-medium">{review.name}</p>
-          <p className="text-sm text-muted-foreground">{review.username}</p>
+    <div className="border rounded-2xl p-4 bg-card shrink-0 max-w-md flex flex-col justify-between cursor-pointer">
+      <div>
+        <QuoteIcon className="text-red-400 mb-5" />
+        <h3 className="text-lg font-bold mb-1">{review.name}</h3>
+        <p className="text-sm">{review.body}</p>
+      </div>
+      <div className="inline-flex gap-3 items-center pt-6">
+        <Avatar>
+          <AvatarImage src={review.img} />
+        </Avatar>
+        <div className="flex flex-col">
+          <span className="text-sm">{review.name}</span>
+          <span className="text-muted-foreground text-xs">
+            {review.username}
+          </span>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-type AnimationType = keyof typeof animations;
-
-function AnimatedReview({
-  review,
-  type,
-}: {
-  review: Review;
-  type: AnimationType;
-}) {
-  const animation = animations[type];
-  return (
-    <div className="relative size-full overflow-hidden">
-      <AnimatePresence initial={false}>
-        <motion.div
-          key={review.username}
-          className="absolute inset-0"
-          initial={animation.initial}
-          animate={animation.animate}
-          exit={animation.exit}
-          transition={{
-            duration: 0.9,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-        >
-          <ReviewCard review={review} />
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-}
+const firstRow = reviews.slice(0, reviews.length / 2)
+const secondRow = reviews.slice(reviews.length / 2)
 
 export default function Testimonials() {
-  const [visibleReviews, setVisibleReviews] = useState(reviews.slice(0, 4));
-
-  const nextIndex = useRef(4);
-  const cycle = useRef(0);
-
-  const getRandomCells = () => {
-    const available = [1, 2, 3];
-    const count = Math.random() < 0.5 ? 1 : 2;
-
-    const selected: number[] = [];
-
-    while (selected.length < count) {
-      const index = Math.floor(Math.random() * available.length);
-
-      selected.push(available[index]);
-      available.splice(index, 1);
-    }
-
-    return selected;
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      cycle.current++;
-
-      setVisibleReviews((current) => {
-        const next = [...current];
-
-        // Randomly change 1 or 2 smaller cards
-        const changingCells = getRandomCells();
-
-        changingCells.forEach((cellIndex) => {
-          next[cellIndex] = reviews[nextIndex.current % reviews.length];
-
-          nextIndex.current++;
-        });
-
-        // Change featured card occasionally
-        if (cycle.current % 4 === 0) {
-          next[0] = reviews[nextIndex.current % reviews.length];
-
-          nextIndex.current++;
-        }
-
-        return next;
-      });
-    }, 3500);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center gap-8 px-6">
-      <h2 className="max-w-md text-center text-5xl font-bold">
-        Hey, people seem to love us too!
-      </h2>
+    <section className="relative max-w-5xl mx-auto p-4 space-y-8">
+      <div className="gap-2 flex-col flex items-center text-center">
+        <Button variant="outline" size="sm" className="rounded-full" asChild>
+          <div>
+            <QuoteIcon />
+            Testimonials
+          </div>
+        </Button>
+        <h2 className="text-4xl font-semibold">
+          Hey, people seem to love us too!
+        </h2>
+      </div>
+      <div className="relative">
+        <Marquee pauseOnHover className="[--duration:20s]">
+          {firstRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </Marquee>
+        <Marquee pauseOnHover reverse className="[--duration:20s]">
+          {secondRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </Marquee>
 
-      <div className="grid min-h-160 w-full grid-cols-4 gap-3">
-        <div className="col-span-2 row-span-2 overflow-hidden rounded-xl border [&_#review-body]:text-2xl">
-          <AnimatedReview review={visibleReviews[0]} type="featured" />
-        </div>
-
-        <div className="col-span-2 overflow-hidden rounded-xl border [&_#review-body]:text-lg">
-          <AnimatedReview review={visibleReviews[1]} type="wide" />
-        </div>
-
-        <div className="overflow-hidden rounded-xl border">
-          <AnimatedReview review={visibleReviews[2]} type="left" />
-        </div>
-
-        <div className="overflow-hidden rounded-xl border">
-          <AnimatedReview review={visibleReviews[3]} type="right" />
-        </div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 sm:w-2/5 w-1/5 bg-linear-to-r from-background via-background/70 to-transparent"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 sm:w-2/5 w-1/5 bg-linear-to-l from-background via-background/70 to-transparent"></div>
       </div>
     </section>
-  );
+  )
 }
