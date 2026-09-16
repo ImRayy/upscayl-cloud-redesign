@@ -1,6 +1,7 @@
 "use client"
 
 import BenifitsSection from "@/components/benifits-section"
+import CTASection from "@/components/cta-section"
 import Footer from "@/components/footer"
 import HeroSection from "@/components/hero-section"
 import InformationSection from "@/components/information-section"
@@ -19,6 +20,7 @@ export default function Home() {
       <BenifitsSection />
       <UpscaylDesktopSection />
       <Testimonials />
+      <CTASection />
       <Footer />
     </div>
   )
