@@ -2,6 +2,7 @@
 
 import BenifitsSection from "@/components/benifits-section"
 import CTASection from "@/components/cta-section"
+import DesktopStepsSection from "@/components/desktop-steps-section"
 import Footer from "@/components/footer"
 import HeroSection from "@/components/hero-section"
 import InformationSection from "@/components/information-section"
@@ -19,6 +20,7 @@ export default function Home() {
       {/* <ProblemSection /> */}
       <BenifitsSection />
       <UpscaylDesktopSection />
+      <DesktopStepsSection />
       <Testimonials />
       <CTASection />
       <Footer />
