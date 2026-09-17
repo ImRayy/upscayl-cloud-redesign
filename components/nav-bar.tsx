@@ -100,7 +100,7 @@ const MobileLayout = () => {
         </div>
       </nav>
       {open && (
-        <div className="fixed z-10 min-h-screen  inset-0 bg-background">
+        <div className="fixed z-10  h-full inset-0 bg-background">
           <div className="flex justify-between p-4 h-full flex-col">
             <div className="max-w-sm w-full mt-20 grid gap-10">
               {footerLinks.map(({ title, links }) => (
@@ -130,7 +130,7 @@ const MobileLayout = () => {
                 </div>
               ))}
             </div>
-            <div className="w-full  grid grid-cols-2 gap-3 border-t pt-4">
+            <div className="w-full grid grid-cols-2 gap-3 border-t pt-4">
               <Button size="lg" variant="outline">
                 Download
               </Button>
