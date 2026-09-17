@@ -9,7 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { DotIcon, LoaderCircle } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
-import { useRef, useState } from "react"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import DarkVeil from "@/components/dark-vail"
 import GradientWaves from "../gradient-waves"
 import { Button } from "../ui/button"
@@ -81,6 +81,18 @@ export default function HeroSectionVariant02() {
   const [activeIndex, setActiveIndex] = useState(0)
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isReady, setIsReady] = useState(false)
+
+  useLayoutEffect(() => {
+    document.body.style.overflow = "hidden"
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = !isReady ? "hidden" : ""
+
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isReady])
 
   useGSAP(
     () => {
