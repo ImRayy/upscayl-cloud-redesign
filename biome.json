@@ -24,7 +24,8 @@
     "rules": {
       "recommended": true,
       "style": { "noNonNullAssertion": "off" },
-      "suspicious": { "noArrayIndexKey": "off" }
+      "suspicious": { "noArrayIndexKey": "off" },
+      "performance": {"noImgElement": "off"}
     }
   },
   "javascript": {
