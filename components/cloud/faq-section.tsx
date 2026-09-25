@@ -25,6 +25,8 @@ import { Label } from "../ui/label"
 import { RainbowButton } from "../ui/rainbow-button"
 import { Textarea } from "../ui/textarea"
 
+const email = "support@upscayl.org"
+
 export default function FAQSection() {
   const [open, setOpen] = useState(false)
 
@@ -33,7 +35,6 @@ export default function FAQSection() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const email = "support@upscayl.org"
     const formData = new FormData(e.currentTarget)
 
     const subject = formData.get("subject") as string
@@ -46,11 +47,11 @@ export default function FAQSection() {
   }
 
   return (
-    <section className="w-full max-w-6xl mx-auto flex-col flex md:flex-row gap-8 justify-between">
-      <div className="flex flex-col gap-8">
+    <section className="w-full max-w-6xl mx-auto flex-col flex md:flex-row gap-6 md:gap-8 justify-between">
+      <div className="flex flex-col md:gap-4">
         <HeaderText
           title="Frequently Asked Questions"
-          description="Find quick answers to common questions about the platform, pricing, and security."
+          description=""
           className="sm:max-w-lg [&>p]:max-w-sm"
         >
           <Button variant="outline" size="sm" className="rounded-full" asChild>
@@ -60,17 +61,30 @@ export default function FAQSection() {
             </div>
           </Button>
         </HeaderText>
-        <div className="bg-card rounded-3xl max-w-xs p-4">
-          <h4>Can&apos;t find the answer you're looking for?</h4>
-          <p className="text-sm text-muted-foreground">
-            Reach out to Upscayl Support
+        <div className="md:bg-card rounded-3xl md:max-w-xs md:p-4">
+          <p className="text-muted-foreground  md:text-card-foreground">
+            Can&apos;t find the answer you're looking for?
           </p>
+          <div className="md:text-sm text-muted-foreground inline-flex gap-1">
+            <p>Reach out to Upscyal Support</p>
+            <div className="md:hidden inline-flex items-cener">
+              at
+              <Button
+                variant="secondary"
+                className="md:hidden rounded-full ml-1 px-3"
+                size="sm"
+                onClick={() => setOpen(true)}
+              >
+                {email}
+              </Button>
+            </div>
+          </div>
           <RainbowButton
             variant="outline"
-            className="mt-6 w-full rounded-full"
+            className="mt-6 w-full rounded-full hidden md:flex"
             onClick={() => setOpen(true)}
           >
-            <span className="text-whtie z-10 text-black">Contact with us</span>
+            <span className="z-10 text-black">Contact with us</span>
             <ArrowRight className="text-black" />
           </RainbowButton>
         </div>
