@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono, Inter } from "next/font/google"
 import "./globals.css"
+import Footer from "@/components/footer"
 import NavBar from "@/components/nav-bar"
 import SmoothScrolling from "@/components/smooth-scrolling"
 import { cn } from "@/lib/utils"
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SmoothScrolling>
           <NavBar />
           {children}
+          <Footer />
         </SmoothScrolling>
       </body>
     </html>

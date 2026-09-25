@@ -85,7 +85,7 @@ const NavLink = ({ label, href, size, className, onClick }: NavLinkProps) => {
 }
 
 const NavShell = ({ children }: { children: ReactNode }) => (
-  <nav className="fixed inset-x-0 top-0 z-20 flex items-center justify-between bg-background p-4">
+  <nav className="fixed inset-x-0 top-0 z-30 flex items-center justify-between bg-background p-4">
     {children}
   </nav>
 )
@@ -161,9 +161,9 @@ const MobileLayout = () => {
       </NavShell>
 
       {open && (
-        <div className="fixed inset-0 z-10 bg-background">
+        <div className="fixed inset-0 z-20 bg-background">
           <div className="flex h-full flex-col justify-between p-4">
-            <div className="mt-20 grid w-full max-w-sm gap-10">
+            <div className="mt-20 grid w-full max-w-sm gap-10 pl-2">
               {menuGroups.map(({ title, links }) => (
                 <div key={title} className="space-y-3">
                   <h4 className="text-md font-medium text-muted-foreground">
