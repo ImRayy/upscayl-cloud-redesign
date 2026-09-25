@@ -1,3 +1,8 @@
+export type FAQ = {
+    question: string
+    answer: string
+}
+
 export const FAQ = {
   cloud: [
     {
@@ -119,4 +124,6 @@ export const FAQ = {
         "No, there are no refunds for unused credits after you cancel your subscription.",
     },
   ],
-};
+} 
+
+

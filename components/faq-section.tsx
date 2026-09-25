@@ -2,15 +2,15 @@
 
 import { ArrowRight, MessageCircleQuestionMark } from "lucide-react"
 import { useId, useState } from "react"
-import { FAQ } from "@/constants/faqs"
-import HeaderText from "../header-text"
+import type { FAQ } from "@/constants/faqs"
+import HeaderText from "./header-text"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../ui/accordion"
-import { Button } from "../ui/button"
+} from "./ui/accordion"
+import { Button } from "./ui/button"
 import {
   Dialog,
   DialogClose,
@@ -19,15 +19,15 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../ui/dialog"
-import { Input } from "../ui/input"
-import { Label } from "../ui/label"
-import { RainbowButton } from "../ui/rainbow-button"
-import { Textarea } from "../ui/textarea"
+} from "./ui/dialog"
+import { Input } from "./ui/input"
+import { Label } from "./ui/label"
+import { RainbowButton } from "./ui/rainbow-button"
+import { Textarea } from "./ui/textarea"
 
 const email = "support@upscayl.org"
 
-export default function FAQSection() {
+export default function FAQSection({ faqs }: { faqs: FAQ[] }) {
   const [open, setOpen] = useState(false)
 
   const componentId = useId()
@@ -92,7 +92,7 @@ export default function FAQSection() {
 
       <div className="md:max-w-lg bg-card p-2 rounded-3xl w-full h-full">
         <Accordion type="multiple" className="space-y-1.5 ">
-          {FAQ.cloud.map((faq, idx) => (
+          {faqs.map((faq, idx) => (
             <AccordionItem
               key={`${componentId}-${idx}`}
               value={`cloud-accordion-${idx}`}

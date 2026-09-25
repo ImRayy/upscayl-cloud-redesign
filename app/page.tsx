@@ -7,7 +7,7 @@ import UpscaylDesktopSection from "@/components/upscayl-desktop-section"
 
 export default function Home() {
   return (
-    <div className="z-10  items-center space-y-28 xl:space-y-48 bg-background">
+    <div className="z-10 items-center space-y-28 xl:space-y-48 bg-background">
       <HeroSection variant="variant-2" />
       <BenifitsSection />
       <UpscaylDesktopSection />
