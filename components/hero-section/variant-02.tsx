@@ -6,11 +6,10 @@ import { Draggable } from "gsap/Draggable"
 import { Flip } from "gsap/Flip"
 import { MotionPathPlugin } from "gsap/MotionPathPlugin"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { DotIcon, LoaderCircle } from "lucide-react"
+import { LoaderCircle } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
 import { useEffect, useLayoutEffect, useRef, useState } from "react"
-import DarkVeil from "@/components/dark-vail"
 import GradientWaves from "../gradient-waves"
 import { Button } from "../ui/button"
 
@@ -83,8 +82,15 @@ export default function HeroSectionVariant02() {
   const [isReady, setIsReady] = useState(false)
 
   useLayoutEffect(() => {
+    if (isReady) return
+
+    const prev = document.body.style.overflow
     document.body.style.overflow = "hidden"
-  }, [])
+
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [isReady])
 
   useEffect(() => {
     document.body.style.overflow = !isReady ? "hidden" : ""
