@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { FaEnvelope, FaGithub, FaTelegram, FaXTwitter } from "react-icons/fa6";
-import { Button } from "../ui/button";
+import Image from "next/image"
+import { FaEnvelope, FaGithub, FaTelegram, FaXTwitter } from "react-icons/fa6"
+import { Button } from "../ui/button"
 
 const footerLinks = [
   {
@@ -25,12 +25,12 @@ const footerLinks = [
       { label: "Terms of Service", href: "/terms" },
     ],
   },
-];
+]
 
 export default function Footer() {
   return (
-    <footer className="footer-reveal p-4 bg-zinc-900 pt-10">
-      <div className="space-y-5 max-w-5xl mx-auto">
+    <footer className="p-4 bg-card flex flex-col pt-16">
+      <div className="space-y-5 max-w-5xl mx-auto mt-auto w-full">
         <div className="flex flex-col sm:flex-row sm:gap-0 gap-6 justify-between pb-2 sm:pb-8">
           <div className="max-w-sm">
             <div className="inline-flex gap-2 items-center">
@@ -58,11 +58,13 @@ export default function Footer() {
                       variant="link"
                       className="justify-start pl-0 text-muted-foreground"
                       key={href}
-                      asChild>
+                      asChild
+                    >
                       <li>
                         <a
                           href={href}
-                          className="transition-colors hover:text-foreground">
+                          className="transition-colors hover:text-foreground"
+                        >
                           {label}
                         </a>
                       </li>
@@ -90,7 +92,8 @@ export default function Footer() {
             </Button>
             <button
               type="button"
-              className="inline-flex items-center gap-2 border p-0.5 pr-3 text-sm h-9">
+              className="inline-flex items-center gap-2 border p-0.5 pr-3 text-sm h-9"
+            >
               <Button className="size-8 rounded-full" asChild>
                 <div>
                   <FaEnvelope />
@@ -102,5 +105,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

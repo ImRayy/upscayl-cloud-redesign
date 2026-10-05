@@ -73,13 +73,16 @@
   --color-color-4: var(--color-4);
   --color-color-3: var(--color-3);
   --color-color-2: var(--color-2);
-  --color-color-1: var(--color-1)
-;
+  --color-color-1: var(--color-1);
   @keyframes rainbow {
-  0% {
-    background-position: 0%;}
-  100% {
-    background-position: 200%;}}}
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+}
 
 :root {
   --radius: 0.625rem;
@@ -126,7 +129,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-black text-foreground;
+    @apply bg-background text-foreground;
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
@@ -156,14 +159,14 @@
 }
 
 .footer-reveal-spacer {
-  flex: 0 0 24rem;
+  flex: 0 0 18rem;
 }
 
 .footer-reveal {
   position: fixed;
   z-index: 0;
   inset: auto 0 0;
-  height: var(--footer-reveal-height, 24rem);
+  height: var(--footer-reveal-height, 18rem);
   color: var(--foreground);
 }
 
