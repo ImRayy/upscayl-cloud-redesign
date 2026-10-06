@@ -60,6 +60,8 @@ export default function InformationSection() {
       mm.add("(min-width: 768px)", () => {
         const getScrollWidth = () => container.scrollWidth - window.innerWidth;
 
+        const maxTravel = () => Math.min(getScrollWidth(), window.innerHeight * 2)
+
         const tween = gsap.to(container, {
           x: () => -getScrollWidth(),
           ease: "none",
@@ -68,7 +70,7 @@ export default function InformationSection() {
             pin: true,
             scrub: 1,
             invalidateOnRefresh: true,
-            end: () => `+=${getScrollWidth()}`,
+            end: () => `+=${maxTravel()}`,
           },
         });
 
