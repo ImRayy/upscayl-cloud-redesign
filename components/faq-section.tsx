@@ -1,16 +1,11 @@
-"use client"
+"use client";
 
-import { ArrowRight, MessageCircleQuestionMark } from "lucide-react"
-import { useId, useState } from "react"
-import type { FAQ } from "@/constants/faqs"
-import HeaderText from "./header-text"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "./ui/accordion"
-import { Button } from "./ui/button"
+import { ArrowRight, MessageCircleQuestionMark } from "lucide-react";
+import { useId, useState } from "react";
+import type { FAQ } from "@/constants/faqs";
+import HeaderText from "./header-text";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
+import { Button } from "./ui/button";
 import {
   Dialog,
   DialogClose,
@@ -19,32 +14,32 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "./ui/dialog"
-import { Input } from "./ui/input"
-import { Label } from "./ui/label"
-import { RainbowButton } from "./ui/rainbow-button"
-import { Textarea } from "./ui/textarea"
+} from "./ui/dialog";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { RainbowButton } from "./ui/rainbow-button";
+import { Textarea } from "./ui/textarea";
 
-const email = "support@upscayl.org"
+const email = "support@upscayl.org";
 
 export default function FAQSection({ faqs }: { faqs: FAQ[] }) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
-  const componentId = useId()
+  const componentId = useId();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const formData = new FormData(e.currentTarget)
+    const formData = new FormData(e.currentTarget);
 
-    const subject = formData.get("subject") as string
-    const body = formData.get("body") as string
+    const subject = formData.get("subject") as string;
+    const body = formData.get("body") as string;
 
-    const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    window.open(mailto, "_blank")
-    setOpen(false)
-  }
+    window.open(mailto, "_blank");
+    setOpen(false);
+  };
 
   return (
     <section className="w-full max-w-6xl mx-auto flex-col flex md:flex-row gap-6 md:gap-8 justify-between">
@@ -114,8 +109,8 @@ export default function FAQSection({ faqs }: { faqs: FAQ[] }) {
           <DialogHeader>
             <DialogTitle>Send an email</DialogTitle>
             <DialogDescription>
-              Compose your email below. Your default email client will open with
-              the recipient, subject, and body prefilled.
+              Compose your email below. Your default email client will open with the recipient,
+              subject, and body prefilled.
             </DialogDescription>
           </DialogHeader>
 
@@ -123,22 +118,12 @@ export default function FAQSection({ faqs }: { faqs: FAQ[] }) {
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email-subject">Subject</Label>
-                <Input
-                  id="email-subject"
-                  name="subject"
-                  placeholder="Email Subject"
-                  required
-                />
+                <Input id="email-subject" name="subject" placeholder="Email Subject" required />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="email-body">Body</Label>
-                <Textarea
-                  id="email-body"
-                  name="body"
-                  placeholder="Body"
-                  required
-                />
+                <Textarea id="email-body" name="body" placeholder="Body" required />
               </div>
             </div>
 
@@ -155,5 +140,5 @@ export default function FAQSection({ faqs }: { faqs: FAQ[] }) {
         </DialogContent>
       </Dialog>
     </section>
-  )
+  );
 }
