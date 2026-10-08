@@ -9,10 +9,10 @@ import {
   PaletteIcon,
   PuzzleIcon,
   SparklesIcon,
-} from "lucide-react"
-import { useId } from "react"
-import HeaderText from "../header-text"
-import { Button } from "../ui/button"
+} from "lucide-react";
+import { useId } from "react";
+import HeaderText from "../header-text";
+import { Button } from "../ui/button";
 
 const features = [
   {
@@ -51,10 +51,10 @@ const features = [
     description:
       "Run a second upscaling pass for even sharper detail and higher resolution results.",
   },
-]
+];
 
 export default function UpscaylDesktopSection() {
-  const componentId = useId()
+  const componentId = useId();
   return (
     <section className="max-w-5xl flex mx-auto items-start justify-center p-4 flex-col gap-8">
       <HeaderText
@@ -84,10 +84,7 @@ export default function UpscaylDesktopSection() {
       </div>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 w-full gap-6 sm:gap-3">
         {features.map((feature, idx) => (
-          <div
-            key={`${componentId}-${idx}`}
-            className="space-y-2 p-3 flex gap-2 sm:flex-col"
-          >
+          <div key={`${componentId}-${idx}`} className="space-y-2 p-3 flex gap-2 sm:flex-col">
             <Button
               variant="ghost"
               size="icon-lg"
@@ -100,13 +97,11 @@ export default function UpscaylDesktopSection() {
             </Button>
             <div>
               <h1 className="font-semibold">{feature.name}</h1>
-              <p className="text-sm text-muted-foreground">
-                {feature.description}
-              </p>
+              <p className="text-sm text-muted-foreground">{feature.description}</p>
             </div>
           </div>
         ))}
       </div>
     </section>
-  )
+  );
 }
