@@ -243,8 +243,24 @@
   outline-offset: -2px;
 }
 
+@keyframes not-found-upscale {
+  from {
+    filter: blur(14px);
+    opacity: 0.4;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.not-found-upscale {
+  animation: not-found-upscale 1200ms cubic-bezier(0.19, 1, 0.22, 1) 150ms both;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .pricing-reveal {
+  .pricing-reveal,
+  .not-found-upscale {
     animation: none;
   }
 
